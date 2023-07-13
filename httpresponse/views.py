@@ -12,7 +12,7 @@ def home(request):
 @csrf_exempt
 def tag_name(request, tag_name):
     try:
-        fragment = HTMLTag.objects.get(html_tag=tag_name)
+        fragment = HTMLTag.objects.get(html_tag=tag_name.lower())
     except HTMLTag.DoesNotExist:
         return HttpResponse(
             "We don't have a html tag called "
