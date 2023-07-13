@@ -2,10 +2,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+from environs import Env
+
+env = Env()
+env.read_env()
+
 SECRET_KEY = "django-insecure-z!2mz(snvcqolq8#3-m1r*3q@=)jv2%^caa_t2_cwl_v=o&vk="
-
-
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ["*"]
 
