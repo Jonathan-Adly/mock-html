@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import HTMLTag
 
+from django.views.decorators.csrf import csrf_exempt
+
 
 def home(request):
     return render(request, "home.html")
 
 
+@csrf_exempt
 def tag_name(request, tag_name):
     try:
         fragment = HTMLTag.objects.get(html_tag=tag_name)
