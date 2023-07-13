@@ -4,3 +4,4 @@ gunicorn==20.1.0
 sqlparse==0.4.4
 typing_extensions==4.7.1
 environs[django]==9.5.0
+whitenoise==6.2.0
