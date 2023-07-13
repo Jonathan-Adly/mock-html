@@ -1,0 +1,90 @@
+[
+{
+    "model": "httpresponse.htmltag",
+    "pk": 1,
+    "fields": {
+        "html_tag": "paragraph",
+        "content": "<p> Lorem Ipsum </p>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 2,
+    "fields": {
+        "html_tag": "unordered-list",
+        "content": "<ul>\r\n  <li> Foo </li>\r\n  <li> Bar </li>\r\n  <li> baz </li>\r\n</ul>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 3,
+    "fields": {
+        "html_tag": "anchor",
+        "content": "<a href=\"https://www.example.com\"> Click here </a>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 4,
+    "fields": {
+        "html_tag": "heading-1",
+        "content": "<h1> Heading 1 </h1>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 5,
+    "fields": {
+        "html_tag": "image",
+        "content": "<img src=\"https://placehold.co/600x400?text=Hello+World\" alt=\"Description of the image\">"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 6,
+    "fields": {
+        "html_tag": "division",
+        "content": "<div> Content here </div>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 7,
+    "fields": {
+        "html_tag": "span",
+        "content": "<span> Some text </span>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 8,
+    "fields": {
+        "html_tag": "ordered-list",
+        "content": "<ol>\r\n  <li> Item 1 </li>\r\n  <li> Item 2 </li>\r\n  <li> Item 3 </li>\r\n</ol>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 9,
+    "fields": {
+        "html_tag": "link-break",
+        "content": "<br>"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 10,
+    "fields": {
+        "html_tag": "text-input",
+        "content": "<input type=\"text\" placeholder=\"Enter your name\">"
+    }
+},
+{
+    "model": "httpresponse.htmltag",
+    "pk": 11,
+    "fields": {
+        "html_tag": "table",
+        "content": "<table>\r\n  <tr>\r\n    <th>Header 1</th>\r\n    <th>Header 2</th>\r\n  </tr>\r\n  <tr>\r\n    <td>Data 1</td>\r\n    <td>Data 2</td>\r\n  </tr>\r\n</table>"
+    }
+}
+]
