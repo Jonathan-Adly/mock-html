@@ -5,3 +5,4 @@ sqlparse==0.4.4
 typing_extensions==4.7.1
 environs[django]==9.5.0
 whitenoise==6.2.0
+requests==2.31.0

@@ -1,1 +1,152 @@
-<h1> Sanity Check </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="HTML Mock Server" />
+    <meta property="og:description" content="HTML fragments to practice with HTMX and Hypermedia driven applications" />
+
+    <!-- Twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="twitter" />
+    <meta name="twitter:creator" content="twitter" />
+    <meta name="twitter:title" content="HTML Mock Server" />
+    <meta name="twitter:description" content="HTML fragments to practice with HTMX and Hypermedia driven applications" />
+
+    <!-- Search engine meta tags -->
+    <meta name="description"
+        content="HTML fragments to practice with HTMX and Hypermedia driven applications" />
+   
+    <title> HTML Mock WebServer </title>
+  
+    <!-- Nucleo Icons -->
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link
+      id="pagestyle"
+      href="{% static 'css/design-system.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Prism -->
+    <link href="{% static 'css/prism.css' %}" rel="stylesheet" />
+ 
+  </head>
+
+  <body>
+    <div class="container d-flex flex-column min-vh-100 mt-5 justify-content-center align-items-cente">
+        <div class="row row-grid">
+          <div class="col-6">
+            <h1 class="text-white">  &lt;/ HTML &gt; Placeholder </h1>
+            <p class="text-white mb-3"> Free fake HTML responses for testing and prototyping hypermedia applications.</p>
+            <p class="text-white mb-3"> Powered by htmx and hyperscript </p>
+            <a href="#try" class="btn btn-primary btn-lg">Try it!</a>
+            <a href="{% url 'documentation' %}" class="btn btn-primary btn-lg">Documentation</a>
+          </div>
+
+          <div class="col-6">
+            <pre>
+                <code class="language-html">
+                    {{ table_code }}
+                </code>
+              </pre>
+          </div>
+      
+        </div>
+    </div>
+
+    <section class="container mx-auto p-3" id="try">
+        <h2>Try it</h2>
+        <p>Run this code here, in a replit or from any site:</p>
+        <pre class="bg-dark text-white p-3">
+            <code class="language-html">
+                {{ code }}
+            </code>
+          </pre>
+        
+        <button class="btn btn-primary" hx-get="{% url 'tag_name' tag_name='table' %}?class=table%20table-bordered" hx-target="#try_code" hx-swap="innerHTML"> Run </button>
+        
+        <pre class="bg-dark text-white p-3">
+          <code class="language-html" id="try_code">
+           // your results will be displayed here
+          </code>
+        </pre>
+
+    </section>
+
+    <section class="container-fluid mx-auto p-3">
+        <h2>When to use</h2>
+        <p> HTML Placeholder is a free online Hypermedia REST API that you can use 
+            whenever you need some fake HTML data. It can be used for testing, prototyping,
+            or just for fun.
+        </p>
+        <p> You can use it to test your htmx or hyperscript code quickly without spinning up your own web server </p>
+    </section>
+
+
+    <section class="container-fluid mx-auto p-3">
+        <h2>Resources </h2>
+        <p> All resources accepts GET/POST/PUT/DELETE requests </p>
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    {% for tag in tags|slice:":6" %}
+                        <li>{{ tag.html_tag }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    {% for tag in tags|slice:"6:" %}
+                        <li>{{ tag.html_tag }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid mx-auto p-3">
+        <h2>Use your own data </h2>
+        <p> Simply make a public Github Gist and make a request to our server with the ID </p>
+        <p> Again - using htmx, you can do this from any site or client. </p>
+        <pre class="bg-dark text-white p-3">
+            <code class="language-html">
+                {{ gist }}
+            </code>
+          </pre>
+        
+        <button class="btn btn-primary" 
+        hx-get="{% url 'gist' gist_id='c9fd72b8f8a265d8bfcdb4338ffc76fa' %}" 
+        hx-target="#try_gist" hx-swap="innerHTML"> Run </button>
+        
+        <pre class="bg-dark text-white p-3">
+          <code class="language-html" id="try_gist">
+           // your results will be displayed here
+          </code>
+        </pre>
+    </section>
+
+    <section class="container-fluid">
+        <h2> Routes </h2>
+        <ul>
+        <li> /tag/{tag_name}:  returns Mock HTML of the tag name</li>
+        <li> /gist/{gist_id}: returns the HTML content of the Github Gist with the provided ID </li>
+        <li> /escape/{tag_name}: returns *ESCAPED* Mock HTML of the tag name </li>
+        </ul>
+    </section>
+    <!-- bootstrap bundle-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <!-- hyperscript -->
+    <script src="https://unpkg.com/hyperscript.org@0.9.9"></script>
+    <!-- prism -->
+    <script src="{% static 'js/prism.js' %}"></script>
+
+  </body>
+</html>
