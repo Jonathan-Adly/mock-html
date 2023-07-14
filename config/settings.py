@@ -14,6 +14,7 @@ DEBUG = env.bool("DEBUG", default=False)
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://html-mock.fly.dev"]
 
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
