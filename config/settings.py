@@ -1,10 +1,16 @@
 from pathlib import Path
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False),
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(BASE_DIR / ".env")
 
+SECRET_KEY = env("SECRET_KEY")
 
-SECRET_KEY = "django-insecure-z!2mz(snvcqolq8#3-m1r*3q@=)jv2%^caa_t2_cwl_v=o&vk="
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 DOMAIN = "https://html-mock.fly.dev"
