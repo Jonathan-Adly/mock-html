@@ -21,9 +21,5 @@ local_settings.py
 db.sqlite3-journal
 
 #models
-hub/
-db.jsonZone.Identifier
-docker-compose-prod.yml
-env.dev
-.dev.env
-.vscode/settings.json
+Dockerfile
+fly.toml

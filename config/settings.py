@@ -12,7 +12,7 @@ SECRET_KEY = "django-insecure-z!2mz(snvcqolq8#3-m1r*3q@=)jv2%^caa_t2_cwl_v=o&vk=
 DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://httpresponse.fly.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://html-mock.fly.dev"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",

@@ -1,44 +1,23 @@
-# fly.toml file generated for httpresponse on 2023-07-13T11:41:42-04:00
+# fly.toml app configuration file generated for html-mock on 2023-07-14T09:15:58-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "httpresponse"
-
-kill_signal = "SIGINT"
-kill_timeout = 5
-processes = []
+app = "html-mock"
+primary_region = "iad"
+console_command = "/code/manage.py shell"
 
 [env]
-  PORT = "8080"
+  PORT = "8000"
 
-[experimental]
-  auto_rollback = true
-
-[[services]]
-  http_checks = []
-  internal_port = 8080
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
   processes = ["app"]
-  protocol = "tcp"
-  script_checks = []
-
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
-
-  [[services.tcp_checks]]
-    grace_period = "1s"
-    interval = "15s"
-    restart_limit = 0
-    timeout = "2s"
 
 [[statics]]
-  guest_path = "/app/public"
+  guest_path = "/code/static"
   url_prefix = "/static/"
