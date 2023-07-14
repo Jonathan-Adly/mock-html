@@ -3,6 +3,7 @@ from html import escape
 import requests
 from django.http import HttpResponse
 from django.shortcuts import render, reverse
+from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import HTMLTag
@@ -10,11 +11,11 @@ from .models import HTMLTag
 
 def home(request):
     table_code = HTMLTag.objects.get(html_tag="table").content
-    url = request.build_absolute_uri("")
+    url = settings.DOMAIN
     code = (
-        f"<button hx-get='{url}tag/table?class=table%20table-bordered'> Get </button>"
+        f"<button hx-get='{url}/tag/table?class=table%20table-bordered'> Get </button>"
     )
-    gist = f"<button hx-get='{url}gist/c9fd72b8f8a265d8bfcdb4338ffc76fa'> Get Gist </button>"
+    gist = f"<button hx-get='{url}/gist/c9fd72b8f8a265d8bfcdb4338ffc76fa'> Get Gist </button>"
     tags = list(
         HTMLTag.objects.all().order_by("html_tag").values_list("html_tag", flat=True)
     )
@@ -29,8 +30,7 @@ def home(request):
 
 
 def documentation(request):
-    # get root url
-    url = request.build_absolute_uri(reverse("home"))
+    url = settings.DOMAIN + "/"
     return render(request, "documentation.html", {"url": url})
 
 

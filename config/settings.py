@@ -3,16 +3,15 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-from environs import Env
-
-env = Env()
-env.read_env()
-
 SECRET_KEY = "django-insecure-z!2mz(snvcqolq8#3-m1r*3q@=)jv2%^caa_t2_cwl_v=o&vk="
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://html-mock.fly.dev"]
+DOMAIN = "https://html-mock.fly.dev"
+if DEBUG:
+    DOMAIN = "http://localhost:8000"
+
+CSRF_TRUSTED_ORIGINS = [DOMAIN]
 
 
 INSTALLED_APPS = [
