@@ -1,5 +1,6 @@
 from pathlib import Path
 import environ
+from corsheaders.defaults import default_headers
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -18,7 +19,25 @@ if DEBUG:
     DOMAIN = "http://localhost:8000"
 
 CSRF_TRUSTED_ORIGINS = [DOMAIN]
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+CORS_ALLOW_HEADERS = (
+    *default_headers,
+    "hx-request",
+    "hx-target",
+    "hx-boosted",
+    "hx-current-url",
+    "hx-trigger",
+    "hx-trigger-name",
+    "hx-target",
+    "HX-Boosted",
+    "HX-Current-URL",
+    "HX-Request",
+    "HX-Trigger",
+    "HX-Trigger-Name",
+    "HX-Target",
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
