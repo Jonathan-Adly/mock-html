@@ -39,60 +39,22 @@ def tag_name(request, tag_name):
             + tag_name
             + ". Please try again with a common html tag."
         )
+
+    content = fragment.content
+    classes = request.GET.get("class", "")
+    if classes:
+        content = content.replace(">", f' class="{classes}">', 1)
     if request.method == "GET":
-        classes = request.GET.get("class", "")
-        content = fragment.content
-        if classes:
-            content = content.replace(">", f' class="{classes}">', 1)
         return HttpResponse(content)
     elif request.method == "POST":
         values = request.POST.values()
-        return HttpResponse(
-            fragment.content + "You Posted the following values: " + " ".join(values)
+        val_str = " ".join(values)
+        content = content.replace(
+            ">", f"> <span> You posted the following values:{val_str} </span>", 1
         )
+        return HttpResponse(content)
     elif request.method == "PUT":
         return HttpResponse("Put Request Received")
-    elif request.method == "DELETE":
-        return HttpResponse("Delete Request Received")
-
-
-@csrf_exempt
-def tag_name_escaped(request):
-    # this to demonstrate in the documentation siste
-    try:
-        fragment = HTMLTag.objects.get(html_tag=tag_name.lower())
-    except HTMLTag.DoesNotExist:
-        return HttpResponse(
-            escape(
-                "We don't have a html tag called "
-                + tag_name
-                + ". Please try again with a common html tag."
-            )
-        )
-    if request.method == "GET":
-        classes = request.GET.get("class", "")
-        content = fragment.content
-        if classes:
-            content = content.replace(">", f' class="{classes}">', 1)
-        return HttpResponse(escape(content))
-    elif request.method == "POST":
-        values = request.POST.values()
-        return HttpResponse(
-            escape(
-                fragment.content
-                + "<br> You Posted the following values: "
-                + " ".join(values)
-            )
-        )
-    elif request.method == "PUT":
-        values = request.PUT.values()
-        return HttpResponse(
-            escape(
-                fragment.content
-                + "<br> You Put the following values: "
-                + " ".join(values)
-            )
-        )
     elif request.method == "DELETE":
         return HttpResponse("Delete Request Received")
 

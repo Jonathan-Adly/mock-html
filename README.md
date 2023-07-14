@@ -1,9 +1,7 @@
 <h4 id="get"> Getting a resource </h4>
     <pre class="bg-dark text-white p-3">
         <code class="language-html">
-            &lt;!-- any html tag can send a request in htmx --&gt;
-            &lt;!-- you can use hx-get or hx-post or hx-put or hx-delete --&gt;
-            &lt;!-- different swap startegy are valid --&gt;
+            &lt;!-- adjust htmx attributes for your own needs --&gt;
             &lt;button
             hx-get=&quot;{{url}}tag/table&quot;
             hx-target=&quot;#results&quot;
@@ -42,7 +40,7 @@
     <p> 👇 Output </p>
     <pre class="bg-dark text-white p-3">
         <code class="language-html">
-            &lt;p&gt; Lorem Ipsum &lt;/p&gt; You Posted the following values: foo
+           &lt;p&gt; &lt;span&gt; You Posted the following values: foo &lt;/span&gt; Lorem Ipsum &lt;/p&gt; 
         </code>
       </pre>
       <br>
