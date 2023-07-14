@@ -93,21 +93,18 @@
         <h2>Resources </h2>
         <p> All resources accepts GET/POST/PUT/DELETE requests </p>
         <div class="row">
-            <div class="col-md-6">
+            {% for tag in tags %}
+            <div class="col-md-3">
                 <ul>
-                    {% for tag in tags|slice:":6" %}
-                        <li>{{ tag.html_tag }}</li>
+                    {% for name in tag %}
+                        <li>{{ name }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-md-6">
-                <ul>
-                    {% for tag in tags|slice:"6:" %}
-                        <li>{{ tag.html_tag }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% endfor %}
+
         </div>
+
     </section>
 
     <section class="container-fluid mx-auto p-3">

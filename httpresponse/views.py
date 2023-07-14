@@ -15,7 +15,12 @@ def home(request):
         f"<button hx-get='{url}tag/table?class=table%20table-bordered'> Get </button>"
     )
     gist = f"<button hx-get='{url}gist/c9fd72b8f8a265d8bfcdb4338ffc76fa'> Get Gist </button>"
-    tags = HTMLTag.objects.all()
+    tags = list(
+        HTMLTag.objects.all().order_by("html_tag").values_list("html_tag", flat=True)
+    )
+    # split into 4 columns
+    tags = [tags[i : i + 4] for i in range(0, len(tags), 4)]
+
     return render(
         request,
         "home.html",
