@@ -18,7 +18,7 @@ if DEBUG:
     DOMAIN = "http://localhost:8000"
 
 CSRF_TRUSTED_ORIGINS = [DOMAIN]
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "httpresponse",
 ]
 
@@ -34,6 +35,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  # whitenoise
+    "corsheaders.middleware.CorsMiddleware",  # corsheaders
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
