@@ -5,11 +5,11 @@ mock-html is a web server powered by Django and htmx that provides mock HTML res
 
 If you are hacking a prototype or following a tutorial with a hypermedia library (htmx and similar), you have to spin up a web server just to see something.
 
-I didn't like the friction and the time it needed just to explain how it works to a new develper who is used to working with JSON. I spent more time getting a web server up than actually explaining things (htmx is dead-simple!).
+I didn't like the friction and the time it needed just to explain how it works to a new developer who is used to working with JSON. I spent more time getting a web server up than actually explaining things (htmx is dead-simple!).
 
-This mock-html server simply returns html fragements as you request them. Hit the server with /tag/{html tag name} - and you get mock html fragements back. You can add custom classes as well. It will also mock POST/PUT/DELETE for you. 
+This mock-html server simply returns html fragments as you request them. Hit the server with /tag/{html tag name} - and you get mock html fragments back. You can add custom classes as well. It will also mock POST/PUT/DELETE for you. 
 
-Also - this works well if you want to use your own custom html fragment. Just make a public <a href="https://gist.github.com/"> github gist </a> and hit the server with the gist id. You can totally use this in all kind of crazy ways.
+Also - this works well if you want to use your own custom html fragment. Just make a public <a href="https://gist.github.com/"> github gist </a> and hit the server with the gist id. You can totally use this in all kinds of crazy ways.
 
 You can find it running here and are free to use it in your developments: https://html-mock.fly.dev/.
 
